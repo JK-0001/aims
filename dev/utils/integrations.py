@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import xml.etree.ElementTree as ET
-from utils.database import init_db
+from utils.database import health_db
 
 def parse_apple_health_data(file_path):
     """
@@ -27,7 +27,7 @@ def load_apple_health_data(file_path):
     Load Apple Health data into the SQLite database.
     """
     df = parse_apple_health_data(file_path)
-    conn = init_db()
+    conn = health_db()
     c = conn.cursor()
 
     # Filter relevant data (e.g., sleep, steps)
